@@ -1,0 +1,339 @@
+/* Global styles for Shared Bike Management System */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Ant Design overrides */
+.ant-layout {
+  min-height: 100vh;
+}
+
+/* Remove sider shadow that causes glow bar on scroll */
+.ant-layout-sider {
+  box-shadow: none;
+}
+
+/* Prevent table horizontal scroll from pushing page width */
+.ant-table-wrapper,
+.ant-table-container {
+  max-width: 100%;
+}
+
+/* Kill ALL Ant Design table fixed-column shadows and ping shadows */
+.ant-table-cell-fix-right-first::after,
+.ant-table-cell-fix-left-last::after,
+.ant-table-cell-fix-right-last::after,
+.ant-table-cell-fix-left-first::after,
+.ant-table-cell-scrollbar:not([rowspan])::after {
+  box-shadow: none !important;
+}
+
+/* Disable ping shadow indicators completely */
+.ant-table-ping-right,
+.ant-table-ping-left {
+  box-shadow: none !important;
+}
+
+/* Ensure no table wrapper overflow glow */
+.ant-table-wrapper,
+.ant-table-container,
+.ant-table-content,
+.ant-table-body {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ============================================
+   Sidebar Menu — Center-aligned, full width matching title
+   ============================================ */
+/* Expanded: centered, full sider width, match title alignment */
+.ant-menu-dark.ant-menu-inline .ant-menu-item,
+.ant-menu-dark.ant-menu-inline .ant-menu-submenu-title {
+  justify-content: center;
+  margin: 2px 0 !important;
+  border-radius: 0;
+  width: 100% !important;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* Collapsed: icons remain centered */
+.ant-menu-dark.ant-menu-inline.ant-menu-inline-collapsed .ant-menu-item,
+.ant-menu-dark.ant-menu-inline.ant-menu-inline-collapsed .ant-menu-submenu-title {
+  justify-content: center;
+}
+
+/* Selected menu item — subtle highlight, no outer glow */
+.ant-menu-dark.ant-menu-inline .ant-menu-item-selected {
+  background: rgba(22, 119, 255, 0.35) !important;
+}
+
+/* Menu item hover */
+.ant-menu-dark.ant-menu-inline .ant-menu-item:not(.ant-menu-item-selected):hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ============================================
+   Responsive Tables
+   ============================================ */
+/* Allow tables to scroll horizontally on small screens */
+@media (max-width: 768px) {
+  .ant-table {
+    font-size: 13px;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    padding: 8px 6px !important;
+  }
+
+  /* Stack filter controls vertically */
+  .ant-space {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .ant-table {
+    font-size: 12px;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    padding: 6px 4px !important;
+  }
+}
+
+/* Card hover effects */
+.ant-card {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.ant-card-hoverable:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Table row hover — visible in both modes */
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background: rgba(22, 119, 255, 0.06) !important;
+}
+
+/* Button hover enhancements */
+.ant-btn:hover {
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* Card stat hover */
+.ant-statistic:hover {
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+/* ============================================
+   Dark Mode Overrides
+   ============================================ */
+[data-theme='dark'] body,
+body:has(.ant-app-dark) {
+  /* Dark-mode card hover — glowing border effect instead of dark shadow */
+  .ant-card-hoverable:hover {
+    box-shadow: 0 4px 20px rgba(22, 119, 255, 0.25), 0 0 0 1px rgba(22, 119, 255, 0.15) !important;
+    transform: translateY(-1px);
+  }
+
+  /* Dark-mode table row hover */
+  .ant-table-tbody > tr.ant-table-row:hover > td {
+    background: rgba(22, 119, 255, 0.12) !important;
+  }
+
+  /* Button dark hover */
+  .ant-btn-text:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  /* Tag dark mode */
+  .ant-tag {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Input/Select dark mode focus */
+  .ant-input:focus,
+  .ant-select-focused .ant-select-selector {
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2) !important;
+  }
+
+  /* Modal dark mode */
+  .ant-modal-content {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Dropdown dark mode */
+  .ant-dropdown-menu {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Statistic card dark mode */
+  .ant-card .ant-statistic-title {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  /* Badge dark mode */
+  .ant-badge-status-text {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  /* Table dark mode */
+  .ant-table {
+    background: transparent !important;
+  }
+
+  .ant-table-thead > tr > th {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.06) !important;
+  }
+
+  /* Descriptions dark mode */
+  .ant-descriptions-bordered .ant-descriptions-item-label {
+    background: rgba(255, 255, 255, 0.02) !important;
+  }
+
+}
+
+/* ============================================
+   Light Mode Overrides (default)
+   ============================================ */
+/* Light-mode card hover — subtle lift */
+@media (prefers-color-scheme: light) {
+  .ant-card-hoverable:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+    transform: translateY(-1px);
+  }
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.bike-marker-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.bike-cluster-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Bike marker hover effect */
+.bike-marker-icon:hover > div {
+  transform: scale(1.3) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+  z-index: 1000 !important;
+}
+
+.bike-cluster-icon:hover > div {
+  transform: scale(1.15) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+  z-index: 1000 !important;
+}
+
+/* ECharts container */
+.echarts-for-react {
+  width: 100% !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   Dashboard Stat Cards — 5 columns on xl, responsive
+   ============================================ */
+.dash-stat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.dash-stat-col {
+  flex: 0 0 calc(20% - 9.6px);  /* 5 per row accounting for 5 gaps */
+  min-width: 140px;
+}
+
+/* lg: 4 per row */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .dash-stat-col { flex: 0 0 calc(25% - 9px); }
+}
+/* md: 3 per row */
+@media (max-width: 991px) and (min-width: 768px) {
+  .dash-stat-col { flex: 0 0 calc(33.333% - 8px); }
+}
+/* sm: 2 per row */
+@media (max-width: 767px) {
+  .dash-stat-col { flex: 0 0 calc(50% - 6px); }
+}
+
+.dash-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dash-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='dark'] .dash-card:hover,
+body:has(.ant-app-dark) .dash-card:hover {
+  box-shadow: 0 6px 20px rgba(22, 119, 255, 0.20);
+}
+
+/* Default card hover */
+.ant-card-hoverable:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* Table pagination */
+.ant-pagination {
+  margin-top: 16px !important;
+}
+
+/* Fix dropdown menu item hover */
+.ant-dropdown-menu-item:hover {
+  background: rgba(22, 119, 255, 0.06) !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
